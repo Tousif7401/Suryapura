@@ -123,36 +123,36 @@ export default function PhotoSlider() {
           {/* Navigation Arrows */}
           <button
             onClick={prevSlide}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-12 w-12 h-12 bg-white/90 hover:bg-white rounded-full shadow-lg flex items-center justify-center transition hover:scale-110 group"
+            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 md:-translate-x-12 z-20 w-10 h-10 sm:w-12 sm:h-12 bg-white/90 hover:bg-white rounded-full shadow-lg flex items-center justify-center transition hover:scale-110 group"
             aria-label="Previous photo"
           >
-            <svg className="w-6 h-6 text-brand-forest group-hover:text-brand-saffron transition" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-5 h-5 sm:w-6 sm:h-6 text-brand-forest group-hover:text-brand-saffron transition" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" />
             </svg>
           </button>
 
           <button
             onClick={nextSlide}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-12 w-12 h-12 bg-white/90 hover:bg-white rounded-full shadow-lg flex items-center justify-center transition hover:scale-110 group"
+            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 md:translate-x-12 z-20 w-10 h-10 sm:w-12 sm:h-12 bg-white/90 hover:bg-white rounded-full shadow-lg flex items-center justify-center transition hover:scale-110 group"
             aria-label="Next photo"
           >
-            <svg className="w-6 h-6 text-brand-forest group-hover:text-brand-saffron transition" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-5 h-5 sm:w-6 sm:h-6 text-brand-forest group-hover:text-brand-saffron transition" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
             </svg>
           </button>
 
           {/* Dot Indicators with Play/Pause Button */}
-          <div className="flex items-center justify-center gap-4 mt-6">
+          <div className="flex items-center justify-center gap-3 sm:gap-4 mt-6">
             {/* Dots */}
-            <div className="flex justify-center gap-3">
+            <div className="flex justify-center gap-2 sm:gap-3">
               {photos.map((_, index) => (
                 <button
                   key={index}
                   onClick={() => setCurrentIndex(index)}
-                  className={`w-12 h-1.5 rounded-full transition-all ${
+                  className={`h-1.5 sm:h-1.5 rounded-full transition-all ${
                     index === currentIndex
-                      ? 'bg-brand-saffron w-16'
-                      : 'bg-white/30 hover:bg-white/50'
+                      ? 'bg-brand-saffron w-8 sm:w-16'
+                      : 'bg-white/30 hover:bg-white/50 w-6 sm:w-12'
                   }`}
                   aria-label={`Go to slide ${index + 1}`}
                 />
@@ -162,16 +162,16 @@ export default function PhotoSlider() {
             {/* Play/Pause Button */}
             <button
               onClick={() => setIsPaused(!isPaused)}
-              className="w-10 h-10 rounded-full bg-white/90 hover:bg-white flex items-center justify-center shadow-lg transition hover:scale-110 group"
+              className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-white/90 hover:bg-white flex items-center justify-center shadow-lg transition hover:scale-110 group flex-shrink-0"
               aria-label={isPaused ? t('slider_play') : t('slider_pause')}
               title={isPaused ? t('slider_play') : t('slider_pause')}
             >
               {isPaused ? (
-                <svg className="w-5 h-5 text-brand-forest group-hover:text-brand-saffron transition" fill="currentColor" viewBox="0 0 24 24">
+                <svg className="w-4 h-4 sm:w-5 sm:h-5 text-brand-forest group-hover:text-brand-saffron transition" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M8 5v14l11-7z" />
                 </svg>
               ) : (
-                <svg className="w-5 h-5 text-brand-forest group-hover:text-brand-saffron transition" fill="currentColor" viewBox="0 0 24 24">
+                <svg className="w-4 h-4 sm:w-5 sm:h-5 text-brand-forest group-hover:text-brand-saffron transition" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z" />
                 </svg>
               )}

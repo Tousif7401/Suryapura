@@ -53,15 +53,16 @@ export default function VillageGallery() {
   ];
 
   return (
-    <section id="gallery" className="max-w-7xl mx-auto px-4 sm:px-6 py-16 border-b border-brand-earth/10">
-      <div className="mb-10 text-center md:text-left">
+    <section id="gallery" className="py-16 border-b border-brand-earth/10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+        <div className="mb-10 text-center md:text-left">
         <h3 className="text-2xl sm:text-3xl font-extrabold text-brand-forest ink-underline">
           {t('sec_gallery_title')}
         </h3>
         <p className="text-brand-earth/80 mt-2 font-medium">{t('sec_gallery_sub')}</p>
       </div>
 
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
         {galleryImages.map((img) => (
           <div key={img.id} className="group bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden cursor-pointer hover:border-brand-saffron transition-colors">
             <div className="w-full aspect-square bg-gray-100 overflow-hidden relative">
@@ -69,6 +70,7 @@ export default function VillageGallery() {
                 src={img.src}
                 alt={img.alt}
                 fill
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                 className="w-full h-full object-cover group-hover:scale-110 transition duration-500"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -83,6 +85,7 @@ export default function VillageGallery() {
             </div>
           </div>
         ))}
+      </div>
       </div>
     </section>
   );
