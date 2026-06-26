@@ -1,21 +1,23 @@
 'use client';
 
 import { useTranslations, useLocale } from 'next-intl';
+import { useState } from 'react';
 
 export default function ComprehensiveSchemes() {
   const t = useTranslations();
   const locale = useLocale();
+  const [currentLocale] = useState(locale);
 
   // Helper function to get text based on locale
   const getLocalizedText = (hi: string, en: string, kn: string) => {
-    if (locale === 'en') return en;
-    if (locale === 'kn') return kn;
+    if (currentLocale === 'en') return en;
+    if (currentLocale === 'kn') return kn;
     return hi; // default to Hindi
   };
 
   const getLocalizedTextWithFallback = (hi: string, en: string, kn?: string) => {
-    if (locale === 'en') return en;
-    if (locale === 'kn' && kn) return kn;
+    if (currentLocale === 'en') return en;
+    if (currentLocale === 'kn' && kn) return kn;
     return hi; // default to Hindi
   };
 

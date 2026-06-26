@@ -2,10 +2,12 @@
 
 import { useTranslations, useLocale } from 'next-intl';
 import Image from 'next/image';
+import { useState } from 'react';
 
 export default function VillageGallery() {
   const t = useTranslations();
   const locale = useLocale();
+  const [currentLocale] = useState(locale);
 
   const galleryImages = [
     {
@@ -77,10 +79,10 @@ export default function VillageGallery() {
             </div>
             <div className="p-3 text-center border-t border-gray-100">
               <p className="font-bold text-sm text-brand-forest">
-                {locale === 'en' ? img.titleEn : img.title}
+                {currentLocale === 'en' ? img.titleEn : img.title}
               </p>
               <p className="text-xs text-gray-500">
-                {locale === 'en' ? img.title : img.titleEn}
+                {currentLocale === 'en' ? img.title : img.titleEn}
               </p>
             </div>
           </div>
