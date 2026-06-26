@@ -7,6 +7,7 @@ import { useLocale, useTranslations } from 'next-intl';
 export default function PhotoSlider() {
   const locale = useLocale();
   const t = useTranslations();
+  const [currentLocale, setCurrentLocale] = useState(locale);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
@@ -107,10 +108,10 @@ export default function PhotoSlider() {
               <div className="flex items-center justify-between">
                 <div>
                   <h3 className="text-2xl md:text-3xl font-extrabold text-white mb-1">
-                    {locale === 'en' ? photos[currentIndex].captionEn : photos[currentIndex].caption}
+                    {currentLocale === 'en' ? photos[currentIndex].captionEn : photos[currentIndex].caption}
                   </h3>
                   <p className="text-brand-sand/90 text-sm md:text-base">
-                    {locale === 'en' ? photos[currentIndex].caption : photos[currentIndex].captionEn}
+                    {currentLocale === 'en' ? photos[currentIndex].caption : photos[currentIndex].captionEn}
                   </p>
                 </div>
                 <div className="hidden md:block text-brand-saffron text-5xl opacity-50">
